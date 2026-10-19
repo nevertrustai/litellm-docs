@@ -1543,6 +1543,7 @@ const sidebars = {
             "providers/runwayml/images",
             "providers/runwayml/videos",
           ] },
+          "providers/safeailabs",
           "providers/sambanova",
           "providers/sap",
           "providers/sarvam",
