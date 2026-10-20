@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 | Model | Context window | Max output tokens |
 |-------|----------------|-------------------|
-| `safeailabs/deepseek/deepseek-v4.1-flash` | 1,048,576 | 65,536 |
+| `safeailabs/sail-frontier` | 1,048,576 | 65,536 |
 
 Model ids carry the vendor prefix, so a LiteLLM model is `safeailabs/<vendor>/<model>`. Each region lists what it serves, with limits and prices, at `GET https://us-region.api.safeailabs.ai/v1/models`. LiteLLM ships the price of the model above, so its spend is tracked; for another model, pass `input_cost_per_token` and `output_cost_per_token` in `litellm_params`.
 
@@ -45,7 +45,7 @@ from litellm import completion
 os.environ["SAFE_AI_KEY"] = ""  # your Safe AI Labs API key
 
 response = completion(
-    model="safeailabs/deepseek/deepseek-v4.1-flash",
+    model="safeailabs/sail-frontier",
     messages=[{"content": "Hello, how are you?", "role": "user"}],
 )
 
@@ -61,7 +61,7 @@ from litellm import completion
 os.environ["SAFE_AI_KEY"] = ""  # your Safe AI Labs API key
 
 response = completion(
-    model="safeailabs/deepseek/deepseek-v4.1-flash",
+    model="safeailabs/sail-frontier",
     messages=[{"content": "Write a short story about AI", "role": "user"}],
     stream=True,
 )
@@ -97,7 +97,7 @@ tools = [{
 }]
 
 response = completion(
-    model="safeailabs/deepseek/deepseek-v4.1-flash",
+    model="safeailabs/sail-frontier",
     messages=[{"role": "user", "content": "What's the weather in San Francisco?"}],
     tools=tools,
     tool_choice="auto",
@@ -117,7 +117,7 @@ import litellm
 os.environ["SAFE_AI_KEY"] = ""  # your Safe AI Labs API key
 
 response = litellm.responses(
-    model="safeailabs/deepseek/deepseek-v4.1-flash",
+    model="safeailabs/sail-frontier",
     input="Say hello",
 )
 
@@ -137,7 +137,7 @@ os.environ["SAFE_AI_KEY"] = ""  # your Safe AI Labs API key
 
 async def main():
     response = await litellm.anthropic.messages.acreate(
-        model="safeailabs/deepseek/deepseek-v4.1-flash",
+        model="safeailabs/sail-frontier",
         messages=[{"role": "user", "content": "Say hello"}],
         max_tokens=64,
     )
@@ -150,9 +150,9 @@ asyncio.run(main())
 
 ```yaml showLineNumbers title="config.yaml"
 model_list:
-  - model_name: deepseek-v4.1-flash
+  - model_name: sail-frontier
     litellm_params:
-      model: safeailabs/deepseek/deepseek-v4.1-flash
+      model: safeailabs/sail-frontier
       api_key: os.environ/SAFE_AI_KEY
 ```
 
@@ -166,7 +166,7 @@ curl http://0.0.0.0:4000/v1/chat/completions \
   -H "Authorization: Bearer sk-1234" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "deepseek-v4.1-flash",
+    "model": "sail-frontier",
     "messages": [{"role": "user", "content": "Hello, how are you?"}]
   }'
 ```
@@ -179,7 +179,7 @@ curl http://0.0.0.0:4000/v1/responses \
   -H "Authorization: Bearer sk-1234" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "deepseek-v4.1-flash",
+    "model": "sail-frontier",
     "input": "Hello, how are you?"
   }'
 ```
@@ -193,7 +193,7 @@ curl http://0.0.0.0:4000/v1/messages \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "deepseek-v4.1-flash",
+    "model": "sail-frontier",
     "max_tokens": 64,
     "messages": [{"role": "user", "content": "Hello, how are you?"}]
   }'
@@ -214,7 +214,7 @@ os.environ["SAFE_AI_BASE_URL"] = "https://gbl.api.safeailabs.ai/v1"
 os.environ["SAFE_AI_KEY"] = ""  # your API key
 
 response = completion(
-    model="safeailabs/deepseek/deepseek-v4.1-flash",
+    model="safeailabs/sail-frontier",
     messages=[{"content": "Hello!", "role": "user"}],
 )
 ```
@@ -225,7 +225,7 @@ response = completion(
 from litellm import completion
 
 response = completion(
-    model="safeailabs/deepseek/deepseek-v4.1-flash",
+    model="safeailabs/sail-frontier",
     messages=[{"content": "Hello!", "role": "user"}],
     api_base="https://gbl.api.safeailabs.ai/v1",
     api_key="your-api-key",
